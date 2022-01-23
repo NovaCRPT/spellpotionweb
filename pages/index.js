@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Hero from "@ui/index/Hero";
+import HeroCarrousel from "@ui/index/HeroCarrousel";
+import ArtProcess from "@ui/index/ArtProcess";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <HeroCarrousel />
+      <ArtProcess />
     </>
   );
 }
