@@ -67,6 +67,7 @@ function HeroCarrousel() {
             key={i}
             alt={`hero_carrouse_${i + 1}`}
             className={i % 2 === 0 ? styles.imgodd : styles.imgeven}
+            loading="lazy"
           />
         ))}
       </Slider>

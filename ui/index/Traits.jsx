@@ -248,6 +248,7 @@ function Traits() {
               className={styles.backImg}
               src={imageUrl}
               alt={`traits_back_${i + 1}`}
+              loading="lazy"
             />
           </div>
         ))}

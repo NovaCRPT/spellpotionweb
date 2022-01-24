@@ -12,7 +12,7 @@ function FramedTrait({ image, imageAlt, big = false }) {
         alt="trait_background"
         className={styles.background}
       />
-      <img src={image} alt={imageAlt} className={styles.trait} />
+      <img src={image} alt={imageAlt} className={styles.trait} loading="lazy" />
     </div>
   );
 }
