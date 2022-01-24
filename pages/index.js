@@ -3,6 +3,7 @@ import Hero from "@ui/index/Hero";
 import HeroCarrousel from "@ui/index/HeroCarrousel";
 import ArtProcess from "@ui/index/ArtProcess";
 import Traits from "@ui/index/Traits";
+import Roadmap from "@ui/index/Roadmap";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <HeroCarrousel />
       <ArtProcess />
       <Traits />
+      <Roadmap />
     </>
   );
 }
