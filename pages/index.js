@@ -2,6 +2,7 @@ import Head from "next/head";
 import Hero from "@ui/index/Hero";
 import HeroCarrousel from "@ui/index/HeroCarrousel";
 import ArtProcess from "@ui/index/ArtProcess";
+import Traits from "@ui/index/Traits";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <HeroCarrousel />
       <ArtProcess />
+      <Traits />
     </>
   );
 }
