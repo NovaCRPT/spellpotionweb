@@ -12,7 +12,9 @@ import team4 from "@assets/team_4.png";
 function Team() {
   return (
     <div className={styles.container}>
-      <Image src={teamTittle} alt="team" />
+      <div className={styles.title}>
+        <Image layout="responsive" src={teamTittle} alt="team" />
+      </div>
       <div className={styles.team_container}>
         <div>
           <Image layout="responsive" src={team2} alt="art" />

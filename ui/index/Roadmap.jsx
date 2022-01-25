@@ -1,14 +1,24 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import Title from "@components/Title";
 import PremintData from "@components/PremintData";
 import PostmintData from "@components/PostmintData";
 import styles from "@styles/roadmap.module.sass";
 
+import roadmap_title from "@assets/roadmap_title.png";
+import premint_title from "@assets/premint_title.png";
+import postmint_title from "@assets/postmint_title.png";
+
+import roadmap_back_1 from "@assets/roadmap_back_1.png";
+import roadmap_back_2 from "@assets/roadmap_back_2.png";
+import roadmap_back_3 from "@assets/roadmap_back_3.png";
+import roadmap_back_4 from "@assets/roadmap_back_4.png";
+import roadmap_back_5 from "@assets/roadmap_back_5.png";
+
 function Roadmap() {
   const premint = [
     {
-      image: "assets/roadmap_back_1.png",
+      image: roadmap_back_1,
       imageAlt: "step 1 background",
       title: "art sharing",
       step: "1",
@@ -16,7 +26,7 @@ function Roadmap() {
       rotation: 2,
     },
     {
-      image: "assets/roadmap_back_2.png",
+      image: roadmap_back_2,
       imageAlt: "step 2 background",
       title: "collaboration",
       step: "2",
@@ -24,7 +34,7 @@ function Roadmap() {
       rotation: -2,
     },
     {
-      image: "assets/roadmap_back_3.png",
+      image: roadmap_back_3,
       imageAlt: "step 3 background",
       title: "giveaways",
       step: "3",
@@ -32,7 +42,7 @@ function Roadmap() {
       rotation: 2,
     },
     {
-      image: "assets/roadmap_back_4.png",
+      image: roadmap_back_4,
       imageAlt: "step 4 background",
       title: "quizzes and minigames",
       step: "4",
@@ -40,7 +50,7 @@ function Roadmap() {
       rotation: -2,
     },
     {
-      image: "assets/roadmap_back_5.png",
+      image: roadmap_back_5,
       imageAlt: "step 5 background",
       title: "listing",
       step: "5",
@@ -94,8 +104,10 @@ function Roadmap() {
   ];
   return (
     <div className={styles.container}>
-      <div className="title">
-        <img src="assets/roadmap_title.png" alt="Roadmap" />
+      <div>
+        <div className={styles.title}>
+          <Image layout="responsive" src={roadmap_title} alt="Roadmap" />
+        </div>
         <p>
           We believe that it will be 3-4 months of intense work until we have
           all the drawings made. During this process we will try to build a
@@ -104,7 +116,13 @@ function Roadmap() {
         </p>
       </div>
       <div className="premint">
-        <Title titleText="STAGE 1: PRE-MINT" rotation={2} />
+        <div className={styles.premint_title}>
+          <Image
+            layout="responsive"
+            src={premint_title}
+            alt="stage 1: pre-mint"
+          />
+        </div>
         <div className={styles.premint_steps}>
           {premint.map((box, i) => (
             <PremintData
@@ -121,7 +139,13 @@ function Roadmap() {
       </div>
 
       <div className="postmint">
-        <Title titleText="STAGE 2: POST-MINT" rotation={-2} />
+        <div className={styles.premint_title}>
+          <Image
+            layout="responsive"
+            src={postmint_title}
+            alt="stage 2: post-mint"
+          />
+        </div>
         <div className={styles.post_steps}>
           {postmint.map((box, i) => (
             <PostmintData key={i} title={box.title} info={box.info} />

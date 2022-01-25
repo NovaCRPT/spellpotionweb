@@ -1,16 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import InfoImage from "@components/InfoImage";
-import Title from "@components/Title";
 import styles from "@styles/artProcess.module.sass";
+
+import artTitlte_1 from "@assets/art_title_1.png";
+import artTitlte_2 from "@assets/art_title_2.png";
+import artTitlte_3 from "@assets/art_title_3.png";
+import artTitlte_4 from "@assets/art_title_4.png";
+
+import process1 from "@assets/process_1.png";
+import process2 from "@assets/process_2.png";
+import process3 from "@assets/process_3.png";
+import digitalization from "@assets/process_4.png";
 
 function ArtProcess() {
   const processes = [
     {
-      titleText: "The Art Process",
-      titleType: "lg",
-      image: "assets/process_1.png",
-      imageAlt: "process_1",
+      titleImage: artTitlte_1,
+      image: process1,
+      imageAlt: "art process",
       desc: [
         "Search for inspiration (brain storm).",
         "The first step in making any drawing is to find a source of inspiration. The theme is the central base of the project and where you will have to put most of efforts.",
@@ -18,20 +27,18 @@ function ArtProcess() {
       ],
     },
     {
-      titleText: "DRAFTS",
-      titleType: "md",
-      image: "assets/process_2.png",
-      imageAlt: "process_2",
+      titleImage: artTitlte_2,
+      image: process2,
+      imageAlt: "drafts",
       desc: [
         "I start to draw a first draft entirely in pencil. In this draft we try to fit the complement to the base (in our case the potion), delimiting the shape with guides, so that it fits in the best possible way once digitized.",
         "Then I make the second draft, this time I use a pen to clearly see the lines using a light tablet, so that the measurements are not deformed.",
       ],
     },
     {
-      titleText: "COLORS",
-      titleType: "md",
-      image: "assets/process_3.png",
-      imageAlt: "process_3",
+      titleImage: artTitlte_3,
+      image: process3,
+      imageAlt: "colors",
       desc: [
         "When the final draft is done, I clean it up and that's when I do the painting part. Here I use various tools: markers, wood pencils, watercolors, pastel chalks, ballpoint pens, etc. The problem is that if you make a mistake, you must start over. I like to seek perfection.",
       ],
@@ -43,7 +50,7 @@ function ArtProcess() {
       {processes.map((pcs, i) => (
         <InfoImage
           key={i}
-          titleText={pcs.titleText}
+          titleImage={pcs.titleImage}
           titleType={pcs.titleType}
           image={pcs.image}
           imageAlt={pcs.imageAlt}
@@ -52,8 +59,12 @@ function ArtProcess() {
         />
       ))}
       <figure className={styles.digitalization}>
-        <Title titleText="DIGITALIZATION" type="md" />
-        <img src="assets/process_4.png" alt="process_4" />
+        <Image src={artTitlte_4} layout="responsive" alt="digitalization" />
+        <Image
+          src={digitalization}
+          alt="digitalization image"
+          layout="responsive"
+        />
         <figcaption className={styles.caption}>
           The last step would be the digitization of the drawings. A
           professional studio camera or scanner is used to digitize the

@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import styles from "@styles/framedTrait.module.sass";
 
 function FramedTrait({ image, imageAlt, big = false }) {
@@ -7,12 +7,18 @@ function FramedTrait({ image, imageAlt, big = false }) {
     <div
       className={[styles.container, big ? styles.containerBig : ""].join(" ")}
     >
-      <img
-        src="assets/frame.png"
-        alt="trait_background"
-        className={styles.background}
-      />
-      <img src={image} alt={imageAlt} className={styles.trait} loading="lazy" />
+      <div className={styles.background}>
+        <Image
+          layout="responsive"
+          src="/assets/frame.png"
+          alt="trait_background"
+          width={250}
+          height={280}
+        />
+      </div>
+      <div className={styles.trait}>
+        <Image quality={100} layout="responsive" src={image} alt={imageAlt} />
+      </div>
     </div>
   );
 }

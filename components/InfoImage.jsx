@@ -1,28 +1,25 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Title from "./Title";
+import Image from "next/image";
 import styles from "@styles/infoImage.module.sass";
 
 function InfoImage({
-  titleText,
-  titleType = "md",
+  titleImage,
+  imageAlt,
   rotation,
   desc,
   image,
-  imageAlt,
   direction = "normal",
 }) {
   return (
     <figure className={[styles.info_image, styles[direction]].join(" ")}>
-      <div className={styles.image}>
-        <img
-          src={image}
-          alt={imageAlt}
-          style={{ transform: `rotation(${rotation}deg)` }}
-        />
+      <div
+        className={styles.image}
+        style={{ transform: `rotation(${rotation}deg)` }}
+      >
+        <Image src={image} alt={imageAlt} />
       </div>
       <figcaption className={styles.info}>
-        <Title titleText={titleText} rotation={rotation} type={titleType} />
+        <Image src={titleImage} layout="responsive" alt={imageAlt} />
         {desc.map((text, i) => (
           <p
             key={i}

@@ -1,10 +1,25 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useRef } from "react";
+import React from "react";
+import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import styles from "@styles/heroCarrousel.module.sass";
+
+import carrousel1 from "@assets/hero_carrouse_1.png";
+import carrousel2 from "@assets/hero_carrouse_2.png";
+import carrousel3 from "@assets/hero_carrouse_3.png";
+import carrousel4 from "@assets/hero_carrouse_4.png";
+import carrousel5 from "@assets/hero_carrouse_5.png";
+import carrousel6 from "@assets/hero_carrouse_6.png";
+import carrousel7 from "@assets/hero_carrouse_7.png";
+import carrousel8 from "@assets/hero_carrouse_8.png";
+import carrousel9 from "@assets/hero_carrouse_9.png";
+import carrousel10 from "@assets/hero_carrouse_10.png";
+import carrousel11 from "@assets/hero_carrouse_11.png";
+import carrousel12 from "@assets/hero_carrouse_12.png";
+import carrousel13 from "@assets/hero_carrouse_13.png";
+import carrousel14 from "@assets/hero_carrouse_14.png";
+import carrousel15 from "@assets/hero_carrouse_15.png";
 
 const settings = {
   infinite: true,
@@ -22,53 +37,40 @@ const settings = {
         slidesToScroll: 1,
       },
     },
-    {
-      breakpoint: 1500,
-      settings: {
-        slidesToShow: 6,
-        slidesToScroll: 1,
-      },
-    },
-    {
-      breakpoint: 2500,
-      settings: {
-        slidesToShow: 7,
-        slidesToScroll: 1,
-      },
-    },
   ],
 };
 
 function HeroCarrousel() {
   const potionsUrls = [
-    "assets/hero_carrouse_1.png",
-    "assets/hero_carrouse_2.png",
-    "assets/hero_carrouse_3.png",
-    "assets/hero_carrouse_4.png",
-    "assets/hero_carrouse_5.png",
-    "assets/hero_carrouse_6.png",
-    "assets/hero_carrouse_7.png",
-    "assets/hero_carrouse_8.png",
-    "assets/hero_carrouse_9.png",
-    "assets/hero_carrouse_10.png",
-    "assets/hero_carrouse_11.png",
-    "assets/hero_carrouse_12.png",
-    "assets/hero_carrouse_13.png",
-    "assets/hero_carrouse_14.png",
-    "assets/hero_carrouse_15.png",
+    carrousel1,
+    carrousel2,
+    carrousel3,
+    carrousel4,
+    carrousel5,
+    carrousel6,
+    carrousel7,
+    carrousel8,
+    carrousel9,
+    carrousel10,
+    carrousel11,
+    carrousel12,
+    carrousel13,
+    carrousel14,
+    carrousel15,
   ];
 
   return (
     <div className={styles.carrousel_container}>
       <Slider {...settings}>
         {potionsUrls.map((imageUrl, i) => (
-          <img
-            src={imageUrl}
-            key={i}
-            alt={`hero_carrouse_${i + 1}`}
-            className={i % 2 === 0 ? styles.imgodd : styles.imgeven}
-            loading="lazy"
-          />
+          <div key={i}>
+            <Image
+              src={imageUrl}
+              alt={`hero_carrouse_${i + 1}`}
+              className={i % 2 === 0 ? styles.imgodd : styles.imgeven}
+              layout="responsive"
+            />
+          </div>
         ))}
       </Slider>
     </div>
