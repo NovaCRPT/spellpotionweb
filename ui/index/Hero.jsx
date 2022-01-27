@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import CountDown from "@components/CountDown";
 import styles from "@styles/hero.module.sass";
 
 import heroBackground from "@assets/hero_background.png";
@@ -101,7 +102,7 @@ const Hero = () => {
           </div>
         </div>
         <p className={[styles.time_counter, "hero_timer"].join(" ")}>
-          20 days, 13 hours, 5 min, 23seg
+          <CountDown target={new Date(Date.UTC(2022, 1, 19, 6, 0, 0))} />
         </p>
       </div>
       <div className={[styles.socials_fixed, "socials_fixed"].join(" ")}>

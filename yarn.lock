@@ -3111,7 +3111,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@17.0.2:
+react-dom@17.0.2, react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -3146,7 +3146,7 @@ react-slick@^0.28.1:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react@17.0.2:
+react@17.0.2, react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -3646,6 +3646,14 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+time-date-countdown@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/time-date-countdown/-/time-date-countdown-2.0.6.tgz#fd869ba7eb8a540e7bdb47061e497b7ff1cd8f4f"
+  integrity sha512-ZgTXPEMHoC72tbS/tiR8ZcFoIimZx2yQWxQGd+xEWzByV6AUx2JWJA+bV0kSwlw1Z/a7zgiReUhTfZwItw/rYA==
+  dependencies:
+    react "^17.0.2"
+    react-dom "^17.0.2"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

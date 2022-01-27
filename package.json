@@ -16,7 +16,8 @@
     "react-slick": "^0.28.1",
     "sass": "^1.49.0",
     "sharp": "^0.29.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "time-date-countdown": "^2.0.6"
   },
   "devDependencies": {
     "eslint": "8.7.0",
