@@ -66,6 +66,9 @@ import traits_potion_3 from "@assets/traits_potion_3.png";
 import traits_potion_4 from "@assets/traits_potion_4.png";
 import traits_potion_5 from "@assets/traits_potion_5.png";
 import traits_potion_6 from "@assets/traits_potion_6.png";
+import traits_potion_7 from "@assets/traits_potion_7.png";
+import traits_potion_8 from "@assets/traits_potion_8.png";
+import traits_potion_9 from "@assets/traits_potion_9.png";
 
 import traits_back_1 from "@assets/traits_back_1.png";
 import traits_back_2 from "@assets/traits_back_2.png";
@@ -187,9 +190,9 @@ function Traits() {
     traits_potion_4,
     traits_potion_5,
     traits_potion_6,
-    traits_potion_1,
-    traits_potion_2,
-    traits_potion_3,
+    traits_potion_7,
+    traits_potion_8,
+    traits_potion_9,
     traits_potion_4,
     traits_potion_5,
     traits_potion_6,
