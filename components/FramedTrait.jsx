@@ -2,10 +2,14 @@ import React from "react";
 import Image from "next/image";
 import styles from "@styles/framedTrait.module.sass";
 
-function FramedTrait({ image, imageAlt, big = false }) {
+function FramedTrait({ image, imageAlt, big = false, gsapClass }) {
   return (
     <div
-      className={[styles.container, big ? styles.containerBig : ""].join(" ")}
+      className={[
+        styles.container,
+        big ? styles.containerBig : "",
+        gsapClass,
+      ].join(" ")}
     >
       <div className={styles.background}>
         <Image

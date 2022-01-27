@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import InfoImage from "@components/InfoImage";
 import styles from "@styles/artProcess.module.sass";
 
@@ -45,6 +47,36 @@ function ArtProcess() {
     },
   ];
 
+  const el = useRef();
+  const tl = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  const q = gsap.utils.selector(el);
+
+  useEffect(() => {
+    tl.current = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el.current,
+          start: "top center-=100px",
+        },
+      })
+      .from(q(".image_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".process_image"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".paragraph"), {
+        stagger: 0.3,
+        opacity: 0,
+        y: 50,
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       {processes.map((pcs, i) => (
@@ -58,14 +90,20 @@ function ArtProcess() {
           direction={i % 2 === 0 ? "normal" : "reverse"}
         />
       ))}
-      <figure className={styles.digitalization}>
-        <Image src={artTitlte_4} layout="responsive" alt="digitalization" />
+      <figure className={styles.digitalization} ref={el}>
+        <Image
+          src={artTitlte_4}
+          layout="responsive"
+          alt="digitalization"
+          className="image_title"
+        />
         <Image
           src={digitalization}
           alt="digitalization image"
           layout="responsive"
+          className="process_image"
         />
-        <figcaption className={styles.caption}>
+        <figcaption className={[styles.caption, "paragraph"].join(" ")}>
           The last step would be the digitization of the drawings. A
           professional studio camera or scanner is used to digitize the
           drawings. You have to take care of the light, that everything is

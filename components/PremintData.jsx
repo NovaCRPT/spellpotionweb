@@ -2,11 +2,19 @@ import React from "react";
 import styles from "@styles/PremintData.module.sass";
 import Image from "next/image";
 
-function PremintData({ image, imageAlt, title, step, info, rotation }) {
+function PremintData({
+  image,
+  imageAlt,
+  title,
+  step,
+  info,
+  rotation,
+  gsapClass,
+}) {
   return (
     <div
       style={{ transform: `rotate(${rotation}deg)` }}
-      className={styles.container}
+      className={[styles.container, gsapClass].join(" ")}
     >
       <span className={styles.step}>{step}</span>
 

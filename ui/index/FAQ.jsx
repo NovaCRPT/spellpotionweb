@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Accordion from "@components/Accordion";
 import styles from "@styles/faq.module.sass";
 
@@ -41,16 +43,40 @@ function FAQ() {
     },
   ];
 
+  const el = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  const q = gsap.utils.selector(el);
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el.current,
+          start: "top center",
+        },
+      })
+      .from(q(".faq_title"), {
+        opacity: 0,
+        y: 50,
+      })
+      .from(q(".faq_accordion"), {
+        stagger: 0.2,
+        rotate: 0,
+        opacity: 0,
+        y: 50,
+      });
+  });
+
   return (
-    <div className={styles.container}>
-      <div className={styles.title}>
+    <div className={styles.container} ref={el}>
+      <div className={[styles.title, "faq_title"].join(" ")}>
         <Image
           layout="responsive"
           src={faq_tittle}
           alt="frequently asked questions"
         />
       </div>
-      <Accordion faq={faq} />
+      <Accordion faq={faq} gsapClass="faq_accordion" />
     </div>
   );
 }

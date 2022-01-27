@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import styles from "@styles/heroCarrousel.module.sass";
 
 import carrousel1 from "@assets/hero_carrouse_1.png";
@@ -59,15 +61,34 @@ function HeroCarrousel() {
     carrousel15,
   ];
 
+  const el = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  const q = gsap.utils.selector(el);
+
+  useEffect(() => {
+    gsap.from(q(".carrousel_image"), {
+      scrollTrigger: {
+        trigger: el.current,
+        start: "top bottom",
+      },
+      rotate: 0,
+      stagger: 0.3,
+      duration: 1,
+    });
+  });
+
   return (
-    <div className={styles.carrousel_container}>
+    <div className={styles.carrousel_container} ref={el}>
       <Slider {...settings}>
         {potionsUrls.map((imageUrl, i) => (
           <div key={i}>
             <Image
               src={imageUrl}
               alt={`hero_carrouse_${i + 1}`}
-              className={i % 2 === 0 ? styles.imgodd : styles.imgeven}
+              className={[
+                i % 2 === 0 ? styles.imgodd : styles.imgeven,
+                "carrousel_image",
+              ].join(" ")}
               layout="responsive"
             />
           </div>

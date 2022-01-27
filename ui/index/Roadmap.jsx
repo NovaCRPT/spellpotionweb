@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Title from "@components/Title";
 import PremintData from "@components/PremintData";
 import PostmintData from "@components/PostmintData";
@@ -46,7 +48,7 @@ function Roadmap() {
       imageAlt: "step 4 background",
       title: "quizzes and minigames",
       step: "4",
-      info: "We want to show the potential of our team. That is why our development team will create a very simple minigame, developed on Unity, so that the community can see what we can do. We also create some fun quizzes in which there will be interesting rewards for the participants.",
+      info: "We will create a very simple minigame, developed on Unity, so that the community can see what we can do. We also create some fun quizzes in which there will be interesting rewards for the participants.",
       rotation: -2,
     },
     {
@@ -102,13 +104,95 @@ function Roadmap() {
       ],
     },
   ];
+
+  const el = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  const q = gsap.utils.selector(el);
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el.current,
+          start: "top center",
+        },
+      })
+      .from(q(".roadmap_title"), {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(q(".paragraph"), {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+      });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".premint"),
+          start: "top center",
+        },
+      })
+      .from(q(".premint_title"), {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(q(".premint_data"), {
+        stagger: 0.1,
+        scale: 0,
+      });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".postmint"),
+          start: "top center",
+        },
+      })
+      .from(q(".postmint_title"), {
+        y: 50,
+        opacity: 0,
+        duration: 0.6,
+      })
+      .from(q(".postmint_data"), {
+        stagger: 0.2,
+        y: 30,
+        rotate: 0,
+        opacity: 0,
+        duration: 0.4,
+      })
+      .from(
+        q(".postmint_data_title"),
+        {
+          stagger: 0.3,
+          x: -30,
+          rotate: -2,
+          opacity: 0,
+          duration: 0.4,
+        },
+        "-=1"
+      )
+      .from(
+        q(".postmint_data_desc"),
+        {
+          stagger: 0.1,
+          x: -30,
+          rotate: -2,
+          opacity: 0,
+          duration: 0.4,
+        },
+        "-=1.2"
+      );
+  });
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={el}>
       <div>
-        <div className={styles.title}>
+        <div className={[styles.title, "roadmap_title"].join(" ")}>
           <Image layout="responsive" src={roadmap_title} alt="Roadmap" />
         </div>
-        <p>
+        <p className="paragraph">
           We believe that it will be 3-4 months of intense work until we have
           all the drawings made. During this process we will try to build a
           community that believes in our project. A healthy, solid and fun
@@ -116,7 +200,7 @@ function Roadmap() {
         </p>
       </div>
       <div className="premint">
-        <div className={styles.premint_title}>
+        <div className={[styles.premint_title, "premint_title"].join(" ")}>
           <Image
             layout="responsive"
             src={premint_title}
@@ -133,13 +217,14 @@ function Roadmap() {
               step={box.step}
               info={box.info}
               rotation={box.rotation}
+              gsapClass="premint_data"
             />
           ))}
         </div>
       </div>
 
       <div className="postmint">
-        <div className={styles.premint_title}>
+        <div className={[styles.premint_title, "postmint_title"].join(" ")}>
           <Image
             layout="responsive"
             src={postmint_title}
@@ -148,7 +233,12 @@ function Roadmap() {
         </div>
         <div className={styles.post_steps}>
           {postmint.map((box, i) => (
-            <PostmintData key={i} title={box.title} info={box.info} />
+            <PostmintData
+              key={i}
+              title={box.title}
+              info={box.info}
+              gsapClass="postmint_data"
+            />
           ))}
         </div>
       </div>

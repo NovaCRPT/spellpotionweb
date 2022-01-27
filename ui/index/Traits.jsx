@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Slider from "react-slick";
 import Title from "@components/Title";
 import FramedTrait from "@components/FramedTrait";
@@ -206,19 +208,151 @@ function Traits() {
     traits_back_5,
   ];
 
+  const el = useRef();
+  const tl = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  const q = gsap.utils.selector(el);
+
+  useEffect(() => {
+    /*STOPPERS ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el.current,
+          start: "top center-=100px",
+        },
+      })
+      .from(q(".traits_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".stopper_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.5,
+      })
+      .from(q(".traits_stopper"), {
+        opacity: 0,
+        rotate: 10,
+        duration: 0.7,
+      });
+    /*NECKLACES ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".necks_title"),
+          start: "top center",
+        },
+      })
+      .from(q(".necks_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".traits_neck"), {
+        opacity: 0,
+        rotate: 10,
+        y: 50,
+        duration: 0.7,
+      });
+    /*LABELS ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".labels_title"),
+          start: "top center",
+        },
+      })
+      .from(q(".labels_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".traits_label"), {
+        opacity: 0,
+        rotate: 10,
+        y: 50,
+        duration: 0.7,
+      });
+    /*BASES ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".bases_title"),
+          start: "top center",
+        },
+      })
+      .from(q(".bases_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".traits_base"), {
+        opacity: 0,
+        rotate: 10,
+        y: 50,
+        duration: 0.7,
+      });
+    /*POTIONS ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".potions_title"),
+          start: "top center",
+        },
+      })
+      .from(q(".potions_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".traits_potion"), {
+        opacity: 0,
+        rotate: 10,
+        y: 50,
+        duration: 0.7,
+      });
+    /*BACKGROUNDS ANIMATIONS*/
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: q(".backs_title"),
+          start: "top center",
+        },
+      })
+      .from(q(".backs_title"), {
+        opacity: 0,
+        y: 50,
+        duration: 0.7,
+      })
+      .from(q(".traits_back"), {
+        opacity: 0,
+        rotate: 10,
+        y: 50,
+        duration: 0.7,
+      });
+  }, []);
+
   return (
-    <div className={styles.container}>
-      <div className={styles.traits_title}>
+    <div className={styles.container} ref={el}>
+      <div className={[styles.traits_title, "traits_title"].join(" ")}>
         <Image layout="responsive" src={traitsTitle} alt="traits" />
       </div>
       {/* STOPPERS */}
-      <Title titleText="STOPPERS" rotation={2} type="md" />
+      <Title
+        titleText="STOPPERS"
+        rotation={2}
+        type="md"
+        gsapClass="stopper_title"
+      />
       <Slider {...settings}>
         {stoppersUrls.map((imageUrl, i) => (
           <FramedTrait
             image={imageUrl}
             key={i}
             imageAlt={`traits_stopper_${i + 1}`}
+            gsapClass="traits_stopper"
           />
         ))}
       </Slider>
@@ -228,17 +362,24 @@ function Traits() {
             image={imageUrl}
             key={i}
             imageAlt={`traits_stopper_${i + 1}`}
+            gsapClass="traits_stopper"
           />
         ))}
       </Slider>
       {/* NECKCLACES */}
-      <Title titleText="NECKLACES" rotation={2} type="md" />
+      <Title
+        titleText="NECKLACES"
+        rotation={2}
+        type="md"
+        gsapClass="necks_title"
+      />
       <Slider {...settings}>
         {necksUrls.map((imageUrl, i) => (
           <FramedTrait
             image={imageUrl}
             key={i}
             imageAlt={`traits_neck_${i + 1}`}
+            gsapClass="traits_neck"
           />
         ))}
       </Slider>
@@ -248,18 +389,25 @@ function Traits() {
             image={imageUrl}
             key={i}
             imageAlt={`traits_neck_${i + 1}`}
+            gsapClass="traits_neck"
           />
         ))}
       </Slider>
 
       {/* LABELS */}
-      <Title titleText="LABELS" rotation={2} type="md" />
+      <Title
+        titleText="LABELS"
+        rotation={2}
+        type="md"
+        gsapClass="labels_title"
+      />
       <Slider {...settings}>
         {labelsUrls.map((imageUrl, i) => (
           <FramedTrait
             image={imageUrl}
             key={i}
             imageAlt={`traits_label_${i + 1}`}
+            gsapClass="traits_label"
           />
         ))}
       </Slider>
@@ -269,18 +417,20 @@ function Traits() {
             image={imageUrl}
             key={i}
             imageAlt={`traits_label_${i + 1}`}
+            gsapClass="traits_label"
           />
         ))}
       </Slider>
 
       {/* BASES */}
-      <Title titleText="BASES" rotation={2} type="md" />
+      <Title titleText="BASES" rotation={2} type="md" gsapClass="bases_title" />
       <Slider {...settings}>
         {basesUrls.map((imageUrl, i) => (
           <FramedTrait
             image={imageUrl}
             key={i}
             imageAlt={`traits_base_${i + 1}`}
+            gsapClass="traits_base"
           />
         ))}
       </Slider>
@@ -290,12 +440,18 @@ function Traits() {
             image={imageUrl}
             key={i}
             imageAlt={`traits_base_${i + 1}`}
+            gsapClass="traits_base"
           />
         ))}
       </Slider>
 
       {/* POTIONS */}
-      <Title titleText="POTIONS" rotation={2} type="md" />
+      <Title
+        titleText="POTIONS"
+        rotation={2}
+        type="md"
+        gsapClass="potions_title"
+      />
       <Slider {...settings}>
         {potionsUrls.map((imageUrl, i) => (
           <FramedTrait
@@ -303,15 +459,21 @@ function Traits() {
             key={i}
             imageAlt={`traits_base_${i + 1}`}
             big
+            gsapClass="traits_potion"
           />
         ))}
       </Slider>
 
       {/* BACKGROUNDS */}
-      <Title titleText="BACKGROUNDS" rotation={2} type="md" />
+      <Title
+        titleText="BACKGROUNDS"
+        rotation={2}
+        type="md"
+        gsapClass="backs_title"
+      />
       <Slider {...settings}>
         {backsUrls.map((imageUrl, i) => (
-          <div key={i}>
+          <div key={i} className="traits_back">
             <Image
               className={styles.backImg}
               src={imageUrl}
