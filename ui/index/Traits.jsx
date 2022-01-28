@@ -359,16 +359,7 @@ function Traits() {
           />
         ))}
       </Slider>
-      <Slider {...settings} rtl>
-        {stoppersUrls.map((imageUrl, i) => (
-          <FramedTrait
-            image={imageUrl}
-            key={i}
-            imageAlt={`traits_stopper_${i + 1}`}
-            gsapClass="traits_stopper"
-          />
-        ))}
-      </Slider>
+
       {/* NECKCLACES */}
       <Title
         titleText="NECKLACES"
@@ -376,16 +367,7 @@ function Traits() {
         type="md"
         gsapClass="necks_title"
       />
-      <Slider {...settings}>
-        {necksUrls.map((imageUrl, i) => (
-          <FramedTrait
-            image={imageUrl}
-            key={i}
-            imageAlt={`traits_neck_${i + 1}`}
-            gsapClass="traits_neck"
-          />
-        ))}
-      </Slider>
+
       <Slider {...settings} rtl>
         {necksUrls.map((imageUrl, i) => (
           <FramedTrait
@@ -414,29 +396,10 @@ function Traits() {
           />
         ))}
       </Slider>
-      <Slider {...settings} rtl>
-        {labelsUrls.map((imageUrl, i) => (
-          <FramedTrait
-            image={imageUrl}
-            key={i}
-            imageAlt={`traits_label_${i + 1}`}
-            gsapClass="traits_label"
-          />
-        ))}
-      </Slider>
 
       {/* BASES */}
       <Title titleText="BASES" rotation={2} type="md" gsapClass="bases_title" />
-      <Slider {...settings}>
-        {basesUrls.map((imageUrl, i) => (
-          <FramedTrait
-            image={imageUrl}
-            key={i}
-            imageAlt={`traits_base_${i + 1}`}
-            gsapClass="traits_base"
-          />
-        ))}
-      </Slider>
+
       <Slider {...settings} rtl>
         {basesUrls.map((imageUrl, i) => (
           <FramedTrait

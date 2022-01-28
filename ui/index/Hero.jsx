@@ -23,6 +23,7 @@ const Hero = () => {
     tl.current = gsap
       .timeline()
       .from(q(".hero_title"), { y: 50, opacity: 0, duration: 0.5 })
+      .from(q(".subdescription"), { y: 50, opacity: 0, duration: 0.5 })
       .from(q(".hero_description"), { y: 50, opacity: 0, duration: 0.5 })
       .from(q(".hero_potion"), { y: 50, opacity: 0, duration: 0.7 })
       .from(q(".socials a"), {
@@ -69,12 +70,16 @@ const Hero = () => {
                 priority
               />
             </div>
+            <p className={[styles.subdescription, "subdescription"].join(" ")}>
+              100% Hand drawn project on Solana
+            </p>
             <p className="hero_description">
               Spellpotions is a collection of 2893 hand-drawn on paper Every
               potion, accessory, and background is fully detailed. There are no
               rarities, the value of each NFT depends on the value you give it
               based on your taste
             </p>
+
             <div className={[styles.socials, "socials"].join(" ")}>
               <a href="https://discord.gg/Phzv6ZAr" target="_blanck">
                 <Image src={discord} height={50} width={50} alt="discord" />
@@ -102,7 +107,7 @@ const Hero = () => {
           </div>
         </div>
         <p className={[styles.time_counter, "hero_timer"].join(" ")}>
-          <CountDown target={new Date(Date.UTC(2022, 1, 19, 6, 0, 0))} />
+          <CountDown target={new Date(Date.UTC(2022, 1, 19, 19, 0, 0))} />
         </p>
       </div>
       <div className={[styles.socials_fixed, "socials_fixed"].join(" ")}>

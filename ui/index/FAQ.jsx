@@ -16,7 +16,7 @@ function FAQ() {
     },
     {
       question: "When is the drop date?",
-      answer: "The drop date will be announced soon. Stay tuned.",
+      answer: "The drop date will be on February 19 at 7PM UTC",
     },
     {
       question: "What is the mint cost?",
