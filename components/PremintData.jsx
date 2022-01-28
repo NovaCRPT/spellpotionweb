@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@styles/PremintData.module.sass";
+import styles from "@styles/premintData.module.sass";
 import Image from "next/image";
 
 function PremintData({
