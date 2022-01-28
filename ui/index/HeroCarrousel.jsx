@@ -62,19 +62,22 @@ function HeroCarrousel() {
   ];
 
   const el = useRef();
-  gsap.registerPlugin(ScrollTrigger);
   const q = gsap.utils.selector(el);
 
   useEffect(() => {
-    gsap.from(q(".carrousel_image"), {
-      scrollTrigger: {
-        trigger: el.current,
-        start: "top bottom",
-      },
-      rotate: 0,
-      stagger: 0.3,
-      duration: 1,
-    });
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.core.globals("ScrollTrigger", ScrollTrigger);
+      gsap.from(q(".carrousel_image"), {
+        scrollTrigger: {
+          trigger: el.current,
+          start: "top bottom",
+        },
+        rotate: 0,
+        stagger: 0.3,
+        duration: 1,
+      });
+    }
   });
 
   return (
